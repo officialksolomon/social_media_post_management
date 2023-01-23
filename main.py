@@ -1,7 +1,7 @@
-from media import MediaFile, MediaType
+from media import ImageFile, MediaType
 from post import Post
 from facebook import Facebook
-from validators import get_factory
+from validators import ImageValidator
 
 
 def main() -> None:
@@ -9,13 +9,8 @@ def main() -> None:
 
     facebook = Facebook("Solomon", "132344")
     facebook.login()
-    media = MediaFile(MediaType.IMAGE, "images\bg.png")
-    post = Post("ChatGPT3", "ChatGPT has come to stay....", media)
-
-    # print(post.media)
-    if post.media is not None:
-        validator = get_factory(post.media.type.name)
-        facebook.publish(post, validator)
+    image = ImageFile(MediaType.IMAGE, "images\bg.png", ImageValidator())
+    post = Post("ChatGPT3", "ChatGPT has come to stay....", image)
     facebook.publish(post)
 
 

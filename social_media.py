@@ -1,6 +1,5 @@
 from abc import ABC, abstractmethod
 from post import Post
-from validators import Validator
 
 
 class SocialMedia(ABC):
@@ -16,6 +15,6 @@ class SocialMedia(ABC):
         print("User succesfully logged in...")
 
     @abstractmethod
-    def publish(self, post: Post, validator: Validator) -> None:
+    def publish(self, post: Post) -> None:
         """Publish posts to social media plaform"""
         pass
